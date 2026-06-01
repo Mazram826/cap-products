@@ -1,7 +1,7 @@
 namespace com.logali;
 
-type name   : String(50);
-type Dec    : Decimal(16, 2);
+type name : String(50);
+type Dec  : Decimal(16, 2);
 
 type Address {
     Street     : String;
@@ -9,6 +9,14 @@ type Address {
     State      : String(2);
     PostalCode : String(5);
     Country    : String(3);
+}
+
+entity Car {
+    key ID                 : UUID;
+        name               : String;
+        virtual discount_1 : Decimal;
+        @Core.Computed : false
+        virtual discount_2 : Decimal;
 }
 
 entity Products {
