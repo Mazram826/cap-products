@@ -10,24 +10,7 @@ type Address {
     Country    : String(3);
 }
 
-// type EmailsAddresses_01 : array of {
-//     kind  : String;
-//     email : String;
-// };
-
-type EmailsAddresses_02 {
-    kind  : String;
-    email : String;
-};
-
-entity emails {
-    emails_01 : EmailsAddresses_01;
-    emails_02 : many EmailsAddresses_02;
-    emails_03 : many {
-        kind  : String;
-        email : String;
-    }
-}
+type Dec : Decimal(16, 2);
 
 entity Products {
     key ID               : UUID;
@@ -36,8 +19,8 @@ entity Products {
         ImageURL         : String;
         ReleaseDate      : DateTime;
         DiscontinuedDate : DateTime;
-        Price            : Decimal(16, 2);
-        Height           : Decimal(16, 2);
+        Price            : Dec;
+        Height           : type of Price;
         Width            : Decimal(16, 2);
         Depth            : Decimal(16, 2);
         Quantity         : Decimal(16, 2);
@@ -45,7 +28,7 @@ entity Products {
 
 entity Suppliers {
     key ID      : UUID;
-        Name    : String;
+        Name    : Products:Name;
         Address : Address;
         Email   : String;
         Phone   : String;
@@ -54,7 +37,7 @@ entity Suppliers {
 
 entity Categories {
     key ID   : String(1);
-        Name : String;
+        Name : type of Products:Name;
 }
 
 entity StockAvailability {
