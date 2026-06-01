@@ -13,11 +13,10 @@ type Address {
 
 entity Products {
     key ID               : UUID;
-        Name             : String default 'No name';
+        Name             : String not null;
         Description      : String;
         ImageURL         : String;
         ReleaseDate      : DateTime default $now;
-        CreationDate     : Date default CURRENT_DATE;
         DiscontinuedDate : DateTime;
         Price            : Dec;
         Height           : type of Price;
