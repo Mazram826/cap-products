@@ -3,11 +3,6 @@ namespace com.logali;
 type name   : String(50);
 type Dec    : Decimal(16, 2);
 
-type gender : String enum {
-    male;
-    female;
-};
-
 type Address {
     Street     : String;
     City       : String;
@@ -16,27 +11,13 @@ type Address {
     Country    : String(3);
 }
 
-type Order {
-    clientGender : gender;
-    status       : Integer enum {
-        submitted = 1;
-        fullfilled = 2;
-        shipped = 3;
-        cancel = -1;
-    };
-    priority     : String @assert.range enum {
-        low;
-        medium;
-        high;
-    }
-}
-
 entity Products {
     key ID               : UUID;
-        Name             : String;
+        Name             : String default 'No name';
         Description      : String;
         ImageURL         : String;
-        ReleaseDate      : DateTime;
+        ReleaseDate      : DateTime default $now;
+        CreationDate     : Date default CURRENT_DATE;
         DiscontinuedDate : DateTime;
         Price            : Dec;
         Height           : type of Price;
