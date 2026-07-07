@@ -105,3 +105,16 @@ entity SelProducts3   as
         Rating
     order by
         Rating;
+
+entity ProjProducts   as projection on Products;
+
+entity ProjProducts2  as
+    projection on Products {
+        *
+    }
+
+entity ProjProducts3  as
+    projection on Products {
+        ReleaseDate,
+        Name
+    }
