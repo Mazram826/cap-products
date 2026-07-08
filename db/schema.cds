@@ -77,21 +77,21 @@ entity SalesData {
         Revenue      : Decimal(16, 2);
 }
 
-entity SelectProducts               as select from Products;
+entity SelectProducts as select from Products;
 
-entity SelProducts1                 as
+entity SelProducts1   as
     select from Products {
         *
     };
 
-entity SelProducts2                 as
+entity SelProducts2   as
     select from Products {
         Name,
         Price,
         Quantity
     };
 
-entity SelProducts3                 as
+entity SelProducts3   as
     select from Products
     left join ProductReview
         on Products.Name = ProductReview.Name
@@ -106,26 +106,20 @@ entity SelProducts3                 as
     order by
         Rating;
 
-entity ProjProducts                 as projection on Products;
+entity ProjProducts   as projection on Products;
 
-entity ProjProducts2                as
+entity ProjProducts2  as
     projection on Products {
         *
     }
 
-entity ProjProducts3                as
+entity ProjProducts3  as
     projection on Products {
         ReleaseDate,
         Name
     }
 
-entity ParamProducts(pName: String) as
-    select
-        Name,
-        Price,
-        Quantity
-    from Products
-    where
-        Name = :pName;
-
-entity ProjParamProducts(pName : String) as projection on Products where Name = : pName;
+extend Products with {
+    PriceCondition     : String(2);
+    PriceDetermination : String(3);
+}
