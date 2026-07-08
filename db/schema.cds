@@ -42,7 +42,7 @@ entity Suppliers {
         Phone   : String;
         Fax     : String;
         Product : Association to many Products
-                    on Product.Supplier = $self;
+                      on Product.Supplier = $self;
 }
 
 entity Categories {
@@ -138,4 +138,22 @@ entity ProjProducts3  as
 extend Products with {
     PriceCondition     : String(2);
     PriceDetermination : String(3);
+}
+
+entity Course {
+    key ID      : UUID;
+        Student : Association to many StudentCourse
+                      on Student.Course = $self;
+}
+
+entity Student {
+    key ID : UUID;
+        Course : Association to many StudentCourse
+                      on Course.Student = $self;
+}
+
+entity StudentCourse {
+    key ID      : UUID;
+        Student : Association to Student;
+        Course  : Association to Course;
 }
