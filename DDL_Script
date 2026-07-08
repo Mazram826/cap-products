@@ -11,8 +11,8 @@ CREATE TABLE com_logali_Products (
   Width DECIMAL(16, 2),
   Depth DECIMAL(16, 2),
   Quantity DECIMAL(16, 2),
-  Supplier_Id NVARCHAR(36),
-  UnitOfMeasure_Id NVARCHAR(2),
+  Supplier_ID NVARCHAR(36),
+  UnitOfMeasure_ID NVARCHAR(2),
   PriceCondition NVARCHAR(2),
   PriceDetermination NVARCHAR(3),
   PRIMARY KEY(ID)
@@ -95,8 +95,8 @@ CREATE VIEW com_logali_SelectProducts AS SELECT
   Products_0.Width,
   Products_0.Depth,
   Products_0.Quantity,
-  Products_0.Supplier_Id,
-  Products_0.UnitOfMeasure_Id,
+  Products_0.Supplier_ID,
+  Products_0.UnitOfMeasure_ID,
   Products_0.PriceCondition,
   Products_0.PriceDetermination
 FROM com_logali_Products AS Products_0;
@@ -113,8 +113,8 @@ CREATE VIEW com_logali_SelProducts1 AS SELECT
   Products_0.Width,
   Products_0.Depth,
   Products_0.Quantity,
-  Products_0.Supplier_Id,
-  Products_0.UnitOfMeasure_Id,
+  Products_0.Supplier_ID,
+  Products_0.UnitOfMeasure_ID,
   Products_0.PriceCondition,
   Products_0.PriceDetermination
 FROM com_logali_Products AS Products_0;
@@ -145,8 +145,8 @@ CREATE VIEW com_logali_ProjProducts AS SELECT
   Products_0.Width,
   Products_0.Depth,
   Products_0.Quantity,
-  Products_0.Supplier_Id,
-  Products_0.UnitOfMeasure_Id,
+  Products_0.Supplier_ID,
+  Products_0.UnitOfMeasure_ID,
   Products_0.PriceCondition,
   Products_0.PriceDetermination
 FROM com_logali_Products AS Products_0;
@@ -163,8 +163,8 @@ CREATE VIEW com_logali_ProjProducts2 AS SELECT
   Products_0.Width,
   Products_0.Depth,
   Products_0.Quantity,
-  Products_0.Supplier_Id,
-  Products_0.UnitOfMeasure_Id,
+  Products_0.Supplier_ID,
+  Products_0.UnitOfMeasure_ID,
   Products_0.PriceCondition,
   Products_0.PriceDetermination
 FROM com_logali_Products AS Products_0;

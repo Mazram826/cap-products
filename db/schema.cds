@@ -23,12 +23,12 @@ entity Products {
         Width            : Decimal(16, 2);
         Depth            : Decimal(16, 2);
         Quantity         : Decimal(16, 2);
-        Supplier_Id      : UUID;
-        ToSupplier       : Association to one Suppliers
-                               on ToSupplier.ID = Supplier_Id;
-        UnitOfMeasure_Id : String(2);
-        toUnitOfMeasure  : Association to UnitOfMeasures
-                               on toUnitOfMeasure.ID = UnitOfMeasure_Id;
+        Supplier         : Association to Suppliers;
+        UnitOfMeasure    : Association to UnitOfMeasures;
+        Currency         : Association to Currencies;
+        DimensionUnit    : Association to DimensionUnits;
+        Category         : Association to Categories;
+
 }
 
 entity Suppliers {
@@ -72,15 +72,20 @@ entity Months {
 }
 
 entity ProductReview {
-    key Name    : String;
+    key ID      : UUID;
+        Name    : String;
         Rating  : Integer;
         Comment : String;
+        Product : Association to Products;
 }
 
 entity SalesData {
-    key ID           : UUID;
-        DeliveryDate : DateTime;
-        Revenue      : Decimal(16, 2);
+    key ID            : UUID;
+        DeliveryDate  : DateTime;
+        Revenue       : Decimal(16, 2);
+        Product       : Association to Products;
+        Currency      : Association to Currencies;
+        DeliveryMonth : Association to Months;
 }
 
 entity SelectProducts as select from Products;
