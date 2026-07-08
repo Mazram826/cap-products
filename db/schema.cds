@@ -34,6 +34,27 @@ entity Products {
                                on Reviews.Product = $self;
 }
 
+entity Orders {
+    key ID       : UUID;
+        Date     : Date;
+        Customer : String;
+        Item     : Composition of many OrderItems
+                       on Item.Order = $self;
+        //Item     : Composition of many {
+        //               key Position : Integer;
+        //                   Order    : Association to Orders;
+        //                   Product  : Association to Products;
+        //                   Quantity : Integer;
+        //           }
+}
+
+entity OrderItems {
+    key ID       : UUID;
+        Order    : Association to Orders;
+        Product  : Association to Products;
+        Quantity : Integer;
+}
+
 entity Suppliers {
     key ID      : UUID;
         Name    : Products:Name;
@@ -147,9 +168,9 @@ entity Course {
 }
 
 entity Student {
-    key ID : UUID;
+    key ID     : UUID;
         Course : Association to many StudentCourse
-                      on Course.Student = $self;
+                     on Course.Student = $self;
 }
 
 entity StudentCourse {
